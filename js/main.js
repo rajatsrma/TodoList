@@ -55,11 +55,12 @@ function completeItem(){
 function editItem(item){
     var tex = item.parentNode.parentNode.childNodes[1];
 
+    //edit text
     var input = document.createElement('input');
     input.type = "text";
     input.value = tex.innerText;
     input.classList.add('in');
-
+    
     var parent = item.parentNode.parentNode;
     parent.removeChild(tex);
     
@@ -69,6 +70,13 @@ function editItem(item){
     var editbutton = item.parentNode.childNodes[2];
 
     editbutton.innerHTML = "Save"; 
+
+
+    input.addEventListener('keyup',function(event){
+        if(event.keyCode === 13){
+            editbutton.click();
+        }
+    });
 
     editbutton.setAttribute('onclick', "saveItem(this)")
 }
